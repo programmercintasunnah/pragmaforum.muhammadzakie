@@ -22,6 +22,19 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+Route::get('/user', function () {
+    return view('users.user');
+});
+
+Route::get('/postinganku', function () {
+    return view('users.postinganku');
+});
+
+Route::get('/forumku', function () {
+    return view('users.forumku');
+});
+
+
 Route::get('/register', function () {
     return view('auth.register');
 });
