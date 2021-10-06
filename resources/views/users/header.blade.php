@@ -55,7 +55,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{request()->is('postinganku')?'active':''}}" href="/postinganku">Postingan
-                        ku</a>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{request()->is('forumku')?'active':''}}" href="/forumku">Forum</a>

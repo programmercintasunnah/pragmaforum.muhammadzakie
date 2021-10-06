@@ -53,7 +53,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <!-- card title -->
-                            <h4 class="card-title mb-4">Projects Contributions</h4>
+                            <h4 class="card-title mb-4">Postingan</h4>
                             <div class="d-md-flex justify-content-between
                       align-items-center mb-4">
                                 <div class="d-flex align-items-center">

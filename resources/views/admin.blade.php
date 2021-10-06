@@ -108,58 +108,34 @@
                 </div>
                 <!-- row  -->
                 <div class="row mt-6">
-                    <div class="col-md-12 col-12">
-                        <!-- card  -->
-                        <div class="card">
-                            <!-- card header  -->
-                            <div class="card-header bg-white border-bottom-0 py-4">
-                                <h4 class="mb-0">Semua Forum</h4>
-                            </div>
-                            <!-- table  -->
-                            <div class="table-responsive">
-                                <table class="table text-nowrap mb-0">
-                                    <thead class="table-light">
-                                        <tr class="text-center">
-                                            <th>#</th>
-                                            <th>Nama Forum</th>
-                                            <th>Jumlah Forum Dalam Forum</th>
-                                            <th>Jumlah Postingan</th>
-                                            <th>Solved</th>
-                                            <th>Dibuat</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="text-center">
-                                            <td class="align-middle">
-                                                1
-                                            </td>
-                                            <td class="align-middle">
-                                                CHELSEA FC
-                                            </td>
-                                            <td class="align-middle">
-                                                10
-                                            </td>
-                                            <td class="align-middle">
-                                                100
-                                            </td>
-                                            <td class="align-middle">
-                                                15
-                                            </td>
-                                            <td class="align-middle">
-                                                06/10/2021
-                                            </td>
-                                            <td class="align-middle">
-                                                detail edit delete
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
+                    <!-- card  -->
+                    <div class="card">
+                        <!-- card header  -->
+                        <div class="bg-white border-bottom-0 py-4">
+                            <h4 class="mb-0">Semua Forum</h4>
                         </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-12 mb-6">
+                            <div class="d-md-flex justify-content-between
+                                  align-items-center mb-4">
+                                <div class="d-flex align-items-center">
+                                    <!-- text -->
+                                    <div class="ms-3 ">
+                                        <h5 class="mb-1"><a href="#" class="text-inherit">Slack Figma Design
+                                                UI</a></h5>
+                                        <p class="mb-0 fs-5 text-muted">Rabu 06/10/2021</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center ms-10 ms-md-0 mt-3">
+                                    <!-- avatar group -->
+                                    <div>
+                                        15 komentar
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
+
                 </div>
                 <!-- row  -->
                 <div class="row my-6">
