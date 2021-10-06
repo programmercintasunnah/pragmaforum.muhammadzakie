@@ -25,9 +25,9 @@
                             <form>
                                 <!-- Username -->
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Username or email</label>
-                                    <input type="email" id="email" class="form-control" name="email"
-                                        placeholder="Email address here" required="">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="username" id="username" class="form-control" name="username"
+                                        placeholder="Username" required="">
                                 </div>
                                 <!-- Password -->
                                 <div class="mb-3">

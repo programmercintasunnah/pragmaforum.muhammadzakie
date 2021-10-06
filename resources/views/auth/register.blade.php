@@ -26,15 +26,14 @@
                             <form>
                                 <!-- Username -->
                                 <div class="mb-3">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" id="name" class="form-control" name="name"
+                                        placeholder="Full Name" required="">
+                                </div>
+                                <div class="mb-3">
                                     <label for="username" class="form-label">User Name</label>
                                     <input type="text" id="username" class="form-control" name="username"
                                         placeholder="User Name" required="">
-                                </div>
-                                <!-- Email -->
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" id="email" class="form-control" name="email"
-                                        placeholder="Email address here" required="">
                                 </div>
                                 <!-- Password -->
                                 <div class="mb-3">

@@ -44,8 +44,8 @@
                     </div>
                 </div>
                 <div>
-                    <a href="#" class="btn btn-outline-primary
-              d-none d-md-block">Edit Profile</a>
+                    <a href="/" class="btn btn-outline-primary
+              d-none d-md-block">Logout</a>
                 </div>
             </div>
             <!-- nav -->
