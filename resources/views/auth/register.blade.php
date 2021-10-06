@@ -23,40 +23,49 @@
 
                             </div>
                             <!-- Form -->
-                            <form>
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
                                 <!-- Username -->
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Full Name</label>
-                                    <input type="text" id="name" class="form-control" name="name"
-                                        placeholder="Full Name" required="">
+                                    <input value="{{old('name')}}" type="text" id="name"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        placeholder="Full Name">
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="username" class="form-label">User Name</label>
-                                    <input type="text" id="username" class="form-control" name="username"
-                                        placeholder="User Name" required="">
+                                    <input value="{{old('username')}}" type="text" id="username"
+                                        class="form-control @error('username') is-invalid @enderror" name="username"
+                                        placeholder="User Name">
+                                    @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <!-- Password -->
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
+                                    <label for="password"
+                                        class="form-label @error('password') is-invalid @enderror">Password</label>
                                     <input type="password" id="password" class="form-control" name="password"
-                                        placeholder="**************" required="">
+                                        placeholder="**************">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <!-- Password -->
                                 <div class="mb-3">
                                     <label for="confirm-password" class="form-label">Confirm
                                         Password</label>
                                     <input type="password" id="confirm-password" class="form-control" name="password"
-                                        placeholder="**************" required="">
-                                </div>
-                                <!-- Checkbox -->
-                                <div class="mb-3">
-                                    <div class="form-check custom-checkbox">
-                                        <input type="checkbox" class="form-check-input" id="agreeCheck">
-                                        <label class="form-check-label" for="agreeCheck"><span class="fs-5">I agree to
-                                                the <a href="terms-condition-page.html">Terms of
-                                                    Service </a>and
-                                                <a href="terms-condition-page.html">Privacy Policy.</a></span></label>
-                                    </div>
+                                        placeholder="**************">
                                 </div>
                                 <div>
                                     <!-- Button -->

@@ -22,28 +22,31 @@
                                 <p class="mb-6">Please enter your user information.</p>
                             </div>
                             <!-- Form -->
-                            <form>
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
                                 <!-- Username -->
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="username" id="username" class="form-control" name="username"
-                                        placeholder="Username" required="">
+                                    <label for="username" class="form-label">User Name</label>
+                                    <input value="{{old('username')}}" type="text" id="username"
+                                        class="form-control @error('username') is-invalid @enderror" name="username"
+                                        placeholder="User Name">
+                                    @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <!-- Password -->
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
+                                    <label for="password"
+                                        class="form-label @error('password') is-invalid @enderror">Password</label>
                                     <input type="password" id="password" class="form-control" name="password"
-                                        placeholder="**************" required="">
-                                </div>
-                                <!-- Checkbox -->
-                                <div class="d-lg-flex justify-content-between align-items-center
-                  mb-4">
-                                    <div class="form-check custom-checkbox">
-                                        <input type="checkbox" class="form-check-input" id="rememberme">
-                                        <label class="form-check-label" for="rememberme">Remember
-                                            me</label>
-                                    </div>
-
+                                        placeholder="**************">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div>
                                     <!-- Button -->

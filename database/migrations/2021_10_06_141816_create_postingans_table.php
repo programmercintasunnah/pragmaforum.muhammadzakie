@@ -17,7 +17,6 @@ class CreatePostingansTable extends Migration
             $table->id();
             $table->bigInteger('forum_id');
             $table->text('content');
-            $table->text('content');
             $table->bigInteger('created_by');
             $table->bigInteger('updated_by')->nullable();
             $table->timestamps();
