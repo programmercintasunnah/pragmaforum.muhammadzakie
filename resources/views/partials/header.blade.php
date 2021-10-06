@@ -13,7 +13,7 @@
     </div>
     <!--Navbar nav -->
     <ul class="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">
-      <button class="btn"> <a href="/login">Logout</a></button>
+      <button class="btn"> <a href="/">Logout</a></button>
       <!-- List -->
       <li class="dropdown ms-2">
         <a class="rounded-circle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown"

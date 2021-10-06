@@ -17,7 +17,7 @@
                         <!-- Card body -->
                         <div class="card-body p-6">
                             <div class="mb-4">
-                                <a href=""><img src="{{asset('assets')}}/images/brand/logo/logo-primary.svg"
+                                <a href="/"><img src="{{asset('assets')}}/images/brand/logo/logo-primary.svg"
                                         class="mb-2" alt=""></a>
                                 <p class="mb-6">Please enter your user information.</p>
                             </div>
