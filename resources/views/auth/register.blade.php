@@ -25,7 +25,6 @@
                             <!-- Form -->
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
-                                <!-- Username -->
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Full Name</label>
                                     <input value="{{old('name')}}" type="text" id="name"
@@ -53,7 +52,7 @@
                                     <label for="password"
                                         class="form-label @error('password') is-invalid @enderror">Password</label>
                                     <input type="password" id="password" class="form-control" name="password"
-                                        placeholder="**************">
+                                        placeholder="password">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -64,8 +63,8 @@
                                 <div class="mb-3">
                                     <label for="confirm-password" class="form-label">Confirm
                                         Password</label>
-                                    <input type="password" id="confirm-password" class="form-control" name="password"
-                                        placeholder="**************">
+                                    <input type="password" id="password" class="form-control"
+                                        name="password_confirmation" placeholder="ulangi password">
                                 </div>
                                 <div>
                                     <!-- Button -->

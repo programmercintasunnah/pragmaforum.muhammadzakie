@@ -24,7 +24,7 @@
                             <!-- Form -->
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
-                                <!-- Username -->
+                                <!-- username -->
                                 <div class="mb-3">
                                     <label for="username" class="form-label">User Name</label>
                                     <input value="{{old('username')}}" type="text" id="username"
