@@ -41,7 +41,7 @@
                                 </div>
                                 <!-- project number -->
                                 <div>
-                                    <h1 class="fw-bold">18</h1>
+                                    <h1 class="fw-bold">{{$users->count()}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 </div>
                                 <!-- project number -->
                                 <div>
-                                    <h1 class="fw-bold">132</h1>
+                                    <h1 class="fw-bold">{{$forum->count()}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -75,16 +75,15 @@
                                 <div class="d-flex justify-content-between align-items-center
                     mb-3">
                                     <div>
-                                        <h4 class="mb-0">Thread</h4>
+                                        <h4 class="mb-0">Postingan</h4>
                                     </div>
                                 </div>
                                 <!-- project number -->
                                 <div>
-                                    <h1 class="fw-bold">12</h1>
+                                    <h1 class="fw-bold">{{$postingan->count()}}</h1>
                                 </div>
                             </div>
-                        </div>
-
+                        </div>  
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-12 col-12 mt-6">
                         <!-- card -->
@@ -114,15 +113,15 @@
                         <div class="bg-white border-bottom-0 py-4">
                             <h4 class="mb-0">Semua Forum</h4>
                         </div>
+                        @foreach($forum as $key => $fo)
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12 mb-6">
                             <div class="d-md-flex justify-content-between
                                   align-items-center mb-4">
                                 <div class="d-flex align-items-center">
                                     <!-- text -->
                                     <div class="ms-3 ">
-                                        <h5 class="mb-1"><a href="#" class="text-inherit">Slack Figma Design
-                                                UI</a></h5>
-                                        <p class="mb-0 fs-5 text-muted">Rabu 06/10/2021</p>
+                                        <h5 class="mb-1"><a href="#" class="text-inherit">{{$fo->title}}</a></h5>
+                                        <p class="mb-0 fs-5 text-muted">{{$fo->content}}</p>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center ms-10 ms-md-0 mt-3">
@@ -132,7 +131,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            @endforeach
                         </div>
                     </div>
 
@@ -146,10 +145,10 @@
                             <div class="card-header bg-white border-bottom-0 py-4">
                                 <h4 class="mb-0">Semua Users</h4>
                             </div>
-                            <div class="table-responsive">
+                            <div class="table-resfnsive">
                                 <table class="table text-nowrap">
                                     <thead class="table-light">
-                                        <tr>
+                                        <tr class="text-center">
                                             <th>Foto</th>
                                             <th>Username</th>
                                             <th>Dibuat</th>
@@ -157,22 +156,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        @foreach($users as $key => $user)
+                                        <tr class="">
                                             <td class="align-middle">
                                                 <div class="d-flex align-items-center">
                                                     <div>
-                                                        <img src="{{asset('assets')}}/images/avatar/avatar-1.jpg" alt=""
+                                                        <img src="{{asset('assets')}}/images/avatar/default.png" alt=""
                                                             class="avatar-md avatar rounded-circle">
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="align-middle">Front End Developer</td>
-                                            <td class="align-middle">3 May, 2021</td>
+                                            <td class="align-middle">{{$user->username}}</td>
+                                            <td class="align-middle">{{$user->created_at}}</td>
                                             <td class="align-middle">
-                                                detail edit delete
+                                                detail
                                             </td>
                                         </tr>
-
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -186,7 +186,7 @@
                                 <h4 class="mb-0">Semua Postingan</h4>
                             </div>
                             <!-- table  -->
-                            <div class="table-responsive">
+                            <div class="table-resfnsive">
                                 <table class="table text-nowrap">
                                     <thead class="table-light">
                                         <tr>
@@ -196,14 +196,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($postingan as $key => $fst)
                                         <tr>
-                                            <td class="align-middle">Front End Developer</td>
-                                            <td class="align-middle">3 May, 2021</td>
+                                            <td class="align-middle">{{$fst->content}}</td>
+                                            <td class="align-middle">{{$fst->created_at}}</td>
                                             <td class="align-middle">
-                                                detail edit delete
+                                                detail
                                             </td>
                                         </tr>
-
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

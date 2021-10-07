@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,13 +19,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
-});
+Route::middleware('role:admin')->get('/admin', [AdminController::class, 'index'])->name('admin');
 
-Route::get('/user', function () {
+Route::middleware('role:user')->get('/user', function () {
     return view('users.user');
-});
+})->name('user');
 
 Route::get('/postinganku', function () {
     return view('users.postinganku');

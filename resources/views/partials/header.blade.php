@@ -13,7 +13,10 @@
     </div>
     <!--Navbar nav -->
     <ul class="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">
-      <button class="btn"> <a href="/">Logout</a></button>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+        @csrf
+        <button type="submit" class="btn"> Logout</button>
+      </form>
       <!-- List -->
       <li class="dropdown ms-2">
         <a class="rounded-circle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown"
