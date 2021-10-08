@@ -143,7 +143,7 @@
                                         <select id="forum" name="forum" class="form-control">
                                             <option value="">Pilih Forum</option>
                                             @foreach($forum as $key => $fo)
-                                            <option value="{{$key+1}}">{{$fo->title}}</option>
+                                            <option value="{{$fo->id}}">{{$fo->title}}</option>
                                             @endforeach
                                         </select>
                                     </div>

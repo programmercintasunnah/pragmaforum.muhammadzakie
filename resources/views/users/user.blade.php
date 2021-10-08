@@ -1,5 +1,5 @@
 @extends('app')
-@section('title', 'User - Forum Pragma Informatika')
+@section('title', 'User - post Pragma Informatika')
 @section('content')
 
 <div id="">
@@ -18,30 +18,42 @@
                         <div class="card-body">
                             <!-- card title -->
                             <h4 class="card-title mb-4">Buat Postingan</h4>
-                            <form>
-                                <!-- Input -->
-                                <div class="mb-3">
-                                    <label class="form-label" for="textInput">Judul</label>
-                                    <input type="text" id="textInput" class="form-control" placeholder="Input Text">
-                                    <span class="text-muted ">Your password must be 8-20
-                                        characters long, contain letters and numbers, and must not
-                                        contain spaces, special characters, or emoji.</span>
-                                </div>
+                            @if(session('success'))
+                            <p class="alert alert-success"> <svg class="icon icon-xs me-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>{{ session('success') }}</p>
+                            @endif
+                            <form action="{{route('addpost')}}" method="post">
+                                @csrf
                                 <div class="mb-3">
                                     <label class="form-label" for="selectOne">Forum</label>
-                                    <select id="selectOne" class="form-control">
-                                        <option>Pilih Forum</option>
+                                    <select id="forum" name="forum"
+                                        class="form-control @error('forum') is-invalid @enderror">
+                                        <option value="">Pilih Forum</option>
                                         @foreach($forum as $key => $fo)
-                                        <option value="{{$key}}">{{$fo->title}}</option>
+                                        <option value="{{$fo->id}}">{{$fo->title}}</option>
                                         @endforeach
                                     </select>
+                                    @error('forum')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="textareaInput">Konten</label>
-                                    <textarea id="textareaInput" class="form-control" placeholder="Textarea field"
-                                        rows="4"></textarea>
+                                    <label class="form-label" for="content">Content</label>
+                                    <textarea id="content" name="content"
+                                        class="form-control  @error('content') is-invalid @enderror"
+                                        placeholder="Content" rows="4">{{old('content')}}</textarea>
+                                    @error('content')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
-                                <button type="button" class="btn btn-primary">Buat</button>
+                                <button type="submit" class="btn btn-primary">Buat</button>
                             </form>
                         </div>
                     </div>
@@ -53,14 +65,14 @@
                         <div class="card-body">
                             <!-- card title -->
                             <h4 class="card-title mb-4">Postingan</h4>
+                            @foreach($postingan as $key => $post)
                             <div class="d-md-flex justify-content-between
                       align-items-center mb-4">
                                 <div class="d-flex align-items-center">
                                     <!-- text -->
                                     <div class="ms-3 ">
-                                        <h5 class="mb-1"><a href="#" class="text-inherit">Slack Figma Design
-                                                UI</a></h5>
-                                        <p class="mb-0 fs-5 text-muted">Project description and details about...</p>
+                                        <h5 class="mb-1"><a href="#" class="text-inherit">{{$post->content}}</a></h5>
+                                        <p class="mb-0 fs-5 text-muted">3 menit yang lalu</p>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center ms-10 ms-md-0 mt-3">
@@ -70,6 +82,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>

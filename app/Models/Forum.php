@@ -10,7 +10,5 @@ class Forum extends Model
 {
 
     use HasFactory;
-
-    // protected $table = "forums";
     protected $guarded = ['id'];
 }

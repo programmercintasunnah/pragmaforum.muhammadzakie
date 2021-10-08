@@ -13,24 +13,16 @@
             <div class="row">
                 <div class="col-xl-4 col-md-12 col-12 mb-6">
                     <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">Laravel</h5>
-                                <small>3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
-                                risus varius blandit.</p>
-                            <small>Donec id elit non mi porta.</small>
-                        </a>
+                        @foreach($postingan as $key => $post)
                         <a href="#" class="list-group-item list-group-item-action">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">React</h5>
-                                <small class="text-muted">3 days ago</small>
+                                <h5 class="mb-1">{{$post->content}}</h5>
+                                <small>3 days ago</small>
                             </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
-                                risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
+                            <p class="mb-1">2 forum</p>
+                            <p class="mb-1">100 postingan</p>
                         </a>
+                        @endforeach
                     </div>
 
                 </div>

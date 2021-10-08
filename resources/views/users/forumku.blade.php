@@ -99,22 +99,16 @@
                 </div>
                 <div class="col-xl-4 col-md-12 col-12 mb-6">
                     <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active">
+                        @foreach($forumku as $key => $fo)
+                        <a href="#" class="list-group-item list-group-item-action">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">Forum 1</h5>
+                                <h5 class="mb-1">{{$fo->title}}</h5>
                                 <small>3 days ago</small>
                             </div>
                             <p class="mb-1">2 forum</p>
                             <p class="mb-1">100 postingan</p>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">Forum 2</h5>
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">2 forum</p>
-                            <p class="mb-1">51 postingan</p>
-                        </a>
+                        @endforeach
                     </div>
 
                 </div>
