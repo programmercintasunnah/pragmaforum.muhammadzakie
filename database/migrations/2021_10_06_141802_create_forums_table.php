@@ -19,7 +19,7 @@ class CreateForumsTable extends Migration
             $table->string('type');
             $table->string('title');
             $table->text('content');
-            $table->bigInteger('created_by');
+            $table->bigInteger('created_by')->nullable();
             $table->bigInteger('updated_by')->nullable();
             $table->timestamps();
         });

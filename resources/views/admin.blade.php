@@ -7,6 +7,7 @@
     </head>
 
     <body>
+
         <!-- Page content -->
         <div id="">
             @include("partials/header")
@@ -24,7 +25,7 @@
                                     <h5 class="mb-0 fw-bold text-black mt-0">{{Auth::user()->username}}</h5>
                                 </div>
                                 <div>
-                                    <a href="#" class="btn btn-white">Create New Forum</a>
+                                    <a href="#" class="btn btn-white">A</a>
                                 </div>
                             </div>
                         </div>
@@ -109,114 +110,178 @@
                 </div>
                 <!-- row  -->
                 <div class="row mt-6">
-                    <!-- card  -->
-                    <div class="card">
-                        <!-- card header  -->
-                        <div class="bg-white border-bottom-0 py-4">
-                            <h4 class="mb-0">Semua Forum</h4>
-                        </div>
-                        @foreach($forum as $key => $fo)
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-12 mb-6">
-                            <div class="d-md-flex justify-content-between
-                                  align-items-center mb-4">
-                                <div class="d-flex align-items-center">
-                                    <!-- text -->
-                                    <div class="ms-3 ">
-                                        <h5 class="mb-1"><a href="#" class="text-inherit">{{$fo->title}}</a></h5>
-                                        <p class="mb-0 fs-5 text-muted">{{$fo->content}}</p>
+                    <!-- card -->
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-12">
+                        <div class="card">
+
+                            <!-- card body -->
+                            <div class="card-body">
+                                <!-- card title -->
+                                <h4 class="card-title mb-4">Buat Forum</h4>
+                                @if(session('success'))
+                                <p class="alert alert-success"> <svg class="icon icon-xs me-2" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>{{ session('success') }}</p>
+                                @endif
+                                <form action="{{route('addforum')}}" method="post">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label class="form-label" for="textInput">Title</label>
+                                        <input type="text" id="title" name="title"
+                                            class="form-control @error('title') is-invalid @enderror"
+                                            placeholder="Masukkan title" value="{{old('title')}}">
+                                        @error('title')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
-                                </div>
-                                <div class="d-flex align-items-center ms-10 ms-md-0 mt-3">
-                                    <!-- avatar group -->
-                                    <div>
-                                        15 komentar
+                                    <div class="mb-3">
+                                        <label class="form-label" for="selectOne">Forum (forum dalam forum)</label>
+                                        <select id="forum" name="forum" class="form-control">
+                                            <option value="">Pilih Forum</option>
+                                            @foreach($forum as $key => $fo)
+                                            <option value="{{$key+1}}">{{$fo->title}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="content">Content</label>
+                                        <textarea id="content" name="content"
+                                            class="form-control  @error('content') is-invalid @enderror"
+                                            placeholder="Content" rows="4">{{old('content')}}</textarea>
+                                        @error('content')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Buat</button>
+                                </form>
                             </div>
-                            @endforeach
                         </div>
                     </div>
 
-                </div>
-                <!-- row  -->
-                <div class="row my-6">
-                    <div class="col-xl-6 col-lg-12 col-md-12 col-12 mb-6 mb-xl-0">
-                        <!-- card  -->
-                        <div class="card h-100">
-                            <!-- card header  -->
-                            <div class="card-header bg-white border-bottom-0 py-4">
-                                <h4 class="mb-0">Semua Users</h4>
-                            </div>
-                            <div class="table-resfnsive">
-                                <table class="table text-nowrap">
-                                    <thead class="table-light">
-                                        <tr class="text-center">
-                                            <th>Foto</th>
-                                            <th>Username</th>
-                                            <th>Dibuat</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($users as $key => $user)
-                                        <tr class="">
-                                            <td class="align-middle">
-                                                <div class="d-flex align-items-center">
-                                                    <div>
-                                                        <img src="{{asset('assets')}}/images/avatar/default.png" alt=""
-                                                            class="avatar-md avatar rounded-circle">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle">{{$user->username}}</td>
-                                            <td class="align-middle">{{$user->created_at}}</td>
-                                            <td class="align-middle">
-                                                detail
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+
+                    <div class="col-xl-6 col-lg-12 col-md-12 col-12">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-5">Semua Forum</h4>
+
+                                <div class="table-responsive">
+                                    <table class="table text-nowrap">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Content</th>
+                                                <th>Jumlah Postingan</th>
+                                                <th>Dibuat</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($forum as $key => $fo)
+                                            <tr>
+                                                <td class="align-middle">{{$fo->title}}</td>
+                                                <td class="align-middle">{{$fo->content}}</td>
+                                                <td class="align-middle">100</td>
+                                                <td class="align-middle">{{$fo->created_at}}</td>
+                                                <td class="align-middle">
+                                                    detail
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
+
                     </div>
-                    <!-- card  -->
-                    <div class="col-xl-6 col-lg-12 col-md-12 col-12">
-                        <div class="card h-100">
-                            <!-- card header  -->
-                            <div class="card-header bg-white border-bottom-0 py-4">
-                                <h4 class="mb-0">Semua Postingan</h4>
+
+                    <!-- row  -->
+                    <div class="row my-6">
+                        <div class="col-xl-6 col-lg-12 col-md-12 col-12 mb-6 mb-xl-0">
+                            <!-- card  -->
+                            <div class="card">
+                                <!-- card body -->
+                                <div class="card-body">
+                                    <!-- card title -->
+                                    <h4 class="card-title mb-4">Semua User</h4>
+                                    <div class="table-responsive">
+                                        <table class="table text-nowrap">
+                                            <thead class="table-light">
+                                                <tr class="text-center">
+                                                    <th>Foto</th>
+                                                    <th>Username</th>
+                                                    <th>Dibuat</th>
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($users as $key => $user)
+                                                <tr class="">
+                                                    <td class="align-middle">
+                                                        <div class="d-flex align-items-center">
+                                                            <div>
+                                                                <img src="{{asset('assets')}}/images/avatar/default.png"
+                                                                    alt="" class="avatar-md avatar rounded-circle">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle">{{$user->username}}</td>
+                                                    <td class="align-middle">{{$user->created_at}}</td>
+                                                    <td class="align-middle">
+                                                        detail
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- table  -->
-                            <div class="table-resfnsive">
-                                <table class="table text-nowrap">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Judul</th>
-                                            <th>Dibuat</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($postingan as $key => $fst)
-                                        <tr>
-                                            <td class="align-middle">{{$fst->content}}</td>
-                                            <td class="align-middle">{{$fst->created_at}}</td>
-                                            <td class="align-middle">
-                                                detail
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                        </div>
+                        <!-- card  -->
+                        <div class="col-xl-6 col-lg-12 col-md-12 col-12">
+                            <div class="card">
+                                <!-- card body -->
+                                <div class="card-body">
+                                    <!-- card title -->
+                                    <h4 class="card-title mb-4">Buat Postingan</h4>
+                                    <div class="table-responsive">
+                                        <table class="table text-nowrap">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Judul</th>
+                                                    <th>Dibuat</th>
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($postingan as $key => $fst)
+                                                <tr>
+                                                    <td class="align-middle">{{$fst->content}}</td>
+                                                    <td class="align-middle">{{$fst->created_at}}</td>
+                                                    <td class="align-middle">
+                                                        detail
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Scripts -->
-        @include("partials/scripts")
+            <!-- Scripts -->
+            @include("partials/scripts")
 
 
     </body>

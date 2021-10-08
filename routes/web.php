@@ -21,7 +21,10 @@ Route::get('/', function () {
 });
 
 Route::middleware('role:admin')->get('/admin', [AdminController::class, 'index'])->name('admin');
-
+Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::post('/addforum', [AdminController::class, 'addforum'])->name('addforum');
+});
 Route::group(['prefix' => 'user', 'middleware' => 'role:user'], function () {
     Route::get('/', [UserController::class, 'index'])->name('user');
     Route::get('/postinganku', [UserController::class, 'postinganku'])->name('postinganku');

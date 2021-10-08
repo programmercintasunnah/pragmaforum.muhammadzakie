@@ -21,6 +21,12 @@ class PostinganTableSeeder extends Seeder
                 'created_by' => 1,
                 'updated_by' => null
             ],
+            [
+                'forum_id' => 1,
+                'content' => 'error prefix laravel 8',
+                'created_by' => 1,
+                'updated_by' => null
+            ],
 
         ];
         foreach ($postingans as $postingan) {

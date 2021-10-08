@@ -24,6 +24,14 @@ class ForumTableSeeder extends Seeder
                 'created_by' => 1,
                 'updated_by' => null
             ],
+            [
+                'parent_id' => 1,
+                'type' => 1,
+                'title' => 'ci',
+                'content' => 'hehehehe',
+                'created_by' => 1,
+                'updated_by' => null
+            ],
 
         ];
         foreach ($forums as $forum) {
