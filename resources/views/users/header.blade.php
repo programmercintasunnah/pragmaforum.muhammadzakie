@@ -57,11 +57,12 @@
                     <a class="nav-link {{request()->is('user')?'active':''}}" href="/user">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{request()->is('postinganku')?'active':''}}" href="/postinganku">Postingan
+                    <a class="nav-link {{request()->is('user/postinganku')?'active':''}}"
+                        href="/user/postinganku">Postingan
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{request()->is('forumku')?'active':''}}" href="/forumku">Forum</a>
+                    <a class="nav-link {{request()->is('user/forumku')?'active':''}}" href="/user/forumku">Forum</a>
                 </li>
             </ul>
         </div>

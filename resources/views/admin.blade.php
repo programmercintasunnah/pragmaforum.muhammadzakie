@@ -20,6 +20,8 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mb-2 mb-lg-0">
                                     <h3 class="mb-0 fw-bold text-white">Welcome Administrator</h3>
+                                    <h3 class="mb-0 fw-bold text-black mt-2">{{ucwords(Auth::user()->name)}}</h3>
+                                    <h5 class="mb-0 fw-bold text-black mt-0">{{Auth::user()->username}}</h5>
                                 </div>
                                 <div>
                                     <a href="#" class="btn btn-white">Create New Forum</a>
@@ -83,7 +85,7 @@
                                     <h1 class="fw-bold">{{$postingan->count()}}</h1>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-12 col-12 mt-6">
                         <!-- card -->

@@ -31,10 +31,9 @@
                                     <label class="form-label" for="selectOne">Forum</label>
                                     <select id="selectOne" class="form-control">
                                         <option>Pilih Forum</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
+                                        @foreach($forum as $key => $fo)
+                                        <option value="{{$key}}">{{$fo->title}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
