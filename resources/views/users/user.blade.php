@@ -11,6 +11,7 @@
         <div class="py-6">
             <!-- row -->
             <div class="row">
+
                 <div class="col-xl-6 col-lg-12 col-md-12 col-12 mb-6">
                     <!-- card -->
                     <div class="card">
@@ -25,6 +26,7 @@
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>{{ session('success') }}</p>
                             @endif
+
                             <form action="{{route('addpost')}}" method="post">
                                 @csrf
                                 <div class="mb-3">
@@ -66,22 +68,14 @@
                             <!-- card title -->
                             <h4 class="card-title mb-4">Postingan</h4>
                             @foreach($postingan as $key => $post)
-                            <div class="d-md-flex justify-content-between
-                      align-items-center mb-4">
-                                <div class="d-flex align-items-center">
-                                    <!-- text -->
-                                    <div class="ms-3 ">
-                                        <h5 class="mb-1"><a href="#" class="text-inherit">{{$post->content}}</a></h5>
-                                        <p class="mb-0 fs-5 text-muted">3 menit yang lalu</p>
-                                    </div>
+                            <a href="/user/postinganku/{{$post->id}}" class="list-group-item list-group-item-action">
+                                <p class="mb-1 text-dark-success">{{$post->users->username}}</p>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{$post->content}}</h5>
+                                    <small>{{$post->created_at->diffForHumans()}}</small>
                                 </div>
-                                <div class="d-flex align-items-center ms-10 ms-md-0 mt-3">
-                                    <!-- avatar group -->
-                                    <div>
-                                        15 komentar
-                                    </div>
-                                </div>
-                            </div>
+                                <p class="mb-1 text-secondary">{{$post->komentar->count()}} komentar</p>
+                            </a>
                             @endforeach
 
                         </div>

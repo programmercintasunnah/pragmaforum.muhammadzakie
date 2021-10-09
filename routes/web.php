@@ -27,9 +27,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function () {
 });
 Route::group(['prefix' => 'user', 'middleware' => 'role:user'], function () {
     Route::get('/', [UserController::class, 'index'])->name('user');
-    Route::get('/postinganku', [UserController::class, 'postinganku'])->name('postinganku');
-    Route::get('/forumku', [UserController::class, 'forumku'])->name('forumku');
+    Route::get('/postinganku/{id}', [UserController::class, 'postinganku'])->name('postinganku');
+    Route::get('/forumku/{id}', [UserController::class, 'forumku'])->name('forumku');
     Route::post('/addpost', [UserController::class, 'addpost'])->name('addpost');
+    Route::post('/komentar', [UserController::class, 'komentar'])->name('komentar');
 });
 
 Auth::routes();

@@ -18,13 +18,13 @@ class PostinganTableSeeder extends Seeder
             [
                 'forum_id' => 1,
                 'content' => 'error assignrole spatie laravel 8',
-                'created_by' => 1,
+                'created_by' => 2,
                 'updated_by' => null
             ],
             [
                 'forum_id' => 1,
                 'content' => 'error prefix laravel 8',
-                'created_by' => 1,
+                'created_by' => 3,
                 'updated_by' => null
             ],
 

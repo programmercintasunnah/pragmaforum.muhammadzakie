@@ -14,13 +14,13 @@
                 <div class="col-xl-4 col-md-12 col-12 mb-6">
                     <div class="list-group">
                         @foreach($postingan as $key => $post)
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a href="/user/postinganku/{{$post->id}}" class="list-group-item list-group-item-action">
+                            <p class="mb-1 text-dark-success">{{$post->users->username}}</p>
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">{{$post->content}}</h5>
-                                <small>3 days ago</small>
+                                <small>{{$post->created_at->diffForHumans()}}</small>
                             </div>
-                            <p class="mb-1">2 forum</p>
-                            <p class="mb-1">100 postingan</p>
+                            <p class="mb-1 text-secondary">{{$post->komentar->count()}} komentar</p>
                         </a>
                         @endforeach
                     </div>
@@ -29,7 +29,7 @@
                 <div class="col-xl-8 col-md-12 col-12 mb-6">
                     <!-- card -->
                     <div class="card">
-                        <!-- card body -->
+
                         <div class="card-body">
                             <div class="d-flex justify-content-between mb-5
                       align-items-center">
@@ -40,75 +40,75 @@
                                             class="avatar avatar-md rounded-circle">
                                     </div>
                                     <div class="ms-3">
-                                        <h5 class="mb-0 fw-bold">Muhammad Zakie</h5>
-                                        <p class="mb-0">19 minutes ago</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <!-- dropdown -->
-                                    <div class="dropdown dropstart">
-                                        <a href="#" class="text-muted text-primary-hover" id="dropdownprojectFive"
-                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i data-feather="more-vertical" class="icon-xxs"></i>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownprojectFive">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else
-                                                here</a>
-                                        </div>
+                                        <h5 class="mb-0 fw-bold">{{($posts->users->username)}}</h5>
+                                        <p class="mb-0">{{$posts->created_at->diffForHumans()}}</p>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="mb-4">
                                 <!-- text -->
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen disse
-                                    var ius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros
-                                    dolor interdum nulla, ut commodo diam libero vitae erat.</p>
-                                {{-- <img src="../assets/images/blog/blog-img-1.jpg" class="rounded-3 w-100" alt=""> --}}
+                                <p class="mb-4">{{$posts->content}}.</p>
                             </div>
                             <!-- icons -->
                             <div class="mb-4">
-                                <span class="me-1 me-md-4"><i data-feather="heart"
-                                        class="icon-xxs text-muted me-2"></i><span>20 Like</span></span>
-                                <span class="me-1 me-md-4"><i data-feather="message-square" class="icon-xxs
-                          text-muted me-2"></i><span>12 Comment</span></span>
-                                <span><i data-feather="share-2" class="icon-xxs
-                          text-muted me-2"></i><span>Share</span></span>
+                                <span class="me-1 me-md-4">
+                                    <i data-feather="message-square" class="icon-xxs
+                          text-muted me-2">
+                                    </i>
+                                    <span>{{$komentar->count()}} komentar</span>
+                                </span>
                             </div>
-                            <div class="border-bottom border-top py-5 d-flex
+                            @foreach($komentar as $key => $komen)
+
+                            <div class="d-flex
                       align-items-center mb-4">
-                                <!-- avatar group -->
-                                <div class="avatar-group me-2 me-md-3">
-                                </div>
-                                <div><span>You and 20 more liked this</span></div>
-                            </div>
-                            <!-- row -->
-                            <div class="row">
-                                <div class="col-xl-1 col-lg-2 col-md-2 col-12 mb-3 mb-lg-0">
-                                    <!-- avatar -->
+                                <div>
                                     <img src="{{asset('assets')}}/images/avatar/default.png"
                                         class="avatar avatar-md rounded-circle" alt="">
+                                    <span class="text-dark p-2">
+                                        {{$komen->users->username}}
+                                    </span>
+                                    <span>
+                                        {{$komen->komen}}
+                                    </span>
+                                    <div class="ms-14">
+                                        <p class="mb-0">{{$komen->created_at->diffForHumans()}}</p>
+                                    </div>
                                 </div>
-                                <!-- input -->
-                                <div class="col-xl-11 col-lg-10 col-md-9 col-12 ">
+                            </div>
 
-                                    <div class="row g-3 align-items-center">
-                                        <div class="col-md-2 col-xxl-1">
-                                            <label for="name" class="col-form-label ">Name</label>
-                                        </div>
-                                        <div class="col-md-8 col-xxl-9  mt-0 mt-md-3">
-                                            <input type="password" id="name" class="form-control"
-                                                aria-describedby="name">
-                                        </div>
-                                        <div class="col-md-2 col-xxl-2">
-                                            <button type="submit" class="btn btn-primary">Post</button>
+                            @endforeach
+
+                            <!-- row -->
+                            <form action="{{route('komentar')}}" method="post">
+                                @csrf
+                                <div class="row">
+
+                                    <!-- input -->
+                                    <div class="col-xl-12 col-lg-10 col-md-9 col-12 ">
+
+                                        <div class="row g-3 align-items-center">
+
+                                            <div class="col-md-10 col-xxl-9  mt-0 mt-md-3">
+                                                <input type="text" hidden name="id" id="id" value="{{$posts->id}}">
+                                                <input type="text" id="komen" name="komen"
+                                                    class="form-control @error('komen') is-invalid @enderror"
+                                                    aria-describedby="name">
+                                                @error('komen')
+                                                <span class="invalid-feedback d-block" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-2 mt-2 col-xxl-2">
+                                                <button type="submit" class="btn btn-primary">Comment</button>
+                                            </div>
+
                                         </div>
                                     </div>
-
                                 </div>
-
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

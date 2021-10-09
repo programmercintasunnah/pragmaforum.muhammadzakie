@@ -34,13 +34,13 @@
                     </div>
                     <!-- text -->
                     <div class="lh-1">
-                        <h2 class="mb-0">Muhammad Zakie
+                        <h2 class="mb-0">{{ucwords(Auth::user()->name)}}
                             <a href="#!" class="text-decoration-none" data-bs-toggle="tooltip" data-placement="top"
                                 title="" data-original-title="Beginner">
 
                             </a>
                         </h2>
-                        <p class="mb-0 d-block">@muhammadzakie22</p>
+                        <p class="mb-0 d-block">{{Auth::user()->username}}</p>
                     </div>
                 </div>
                 <div>
@@ -57,12 +57,14 @@
                     <a class="nav-link {{request()->is('user')?'active':''}}" href="/user">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{request()->is('user/postinganku')?'active':''}}"
-                        href="/user/postinganku">Postingan
+
+                    <a class="nav-link {{request()->is('user/postinganku/'.$posts->id)?'active':''}}"
+                        href="/user/postinganku/{{$posts->id}}">Postingan
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{request()->is('user/forumku')?'active':''}}" href="/user/forumku">Forum</a>
+                    <a class="nav-link {{request()->is('user/forumku/'.$posts->id)?'active':''}}"
+                        href="/user/forumku/{{$posts->id}}">Forum</a>
                 </li>
             </ul>
         </div>

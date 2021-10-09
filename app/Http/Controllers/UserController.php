@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Forum;
+use App\Models\Komentar;
 use App\Models\Postingan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,17 +15,24 @@ class UserController extends Controller
     {
         $forum = Forum::all();
         $postingan = Postingan::all();
-        return view('users.user', compact('forum', 'postingan'));
+        $posts = Postingan::latest()->first();
+        // dd($postlast);
+        return view('users.user', compact('forum', 'postingan', 'posts'));
     }
-    public function postinganku()
+    public function postinganku($id)
     {
+        $idpost = $id;
         $postingan = Postingan::all();
-        return view('users.postinganku', compact('postingan'));
+        $posts = Postingan::where('id', $idpost)->first();
+        $komentar = Komentar::where('post_id', $idpost)->get();
+        // dd($posts->users);
+        return view('users.postinganku', compact('posts', 'postingan', 'komentar'));
     }
-    public function forumku()
+    public function forumku($id)
     {
-        $forumku = Forum::all();
-        return view('users.forumku', compact('forumku'));
+        $forumku = Forum::with('posts.users')->get();
+        $posts = Postingan::where('id', $id)->first();
+        return view('users.forumku', compact('forumku', 'posts'));
     }
     public function addpost(Request $request)
     {
@@ -45,5 +54,20 @@ class UserController extends Controller
         ];
         Postingan::create($data);
         return redirect()->back()->with('success', 'postingan anda berhasil di tambahkan');
+    }
+    public function komentar(Request $request)
+    {
+        $this->validate($request, [
+            'komen' => 'required',
+        ]);
+
+        $data = [
+            "post_id" => $request->id,
+            'komen' => $request->komen,
+            'created_by' => Auth::user()->id,
+            // 'created_by' => null,
+        ];
+        Komentar::create($data);
+        return redirect()->back();
     }
 }

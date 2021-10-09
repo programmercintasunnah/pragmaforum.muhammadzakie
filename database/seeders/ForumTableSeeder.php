@@ -19,16 +19,16 @@ class ForumTableSeeder extends Seeder
             [
                 'parent_id' => 1,
                 'type' => 1,
-                'title' => 'laravel',
-                'content' => 'bblablaeaaa',
+                'title' => 'php',
+                'content' => 'belajar tentang php',
                 'created_by' => 1,
                 'updated_by' => null
             ],
             [
                 'parent_id' => 1,
                 'type' => 1,
-                'title' => 'ci',
-                'content' => 'hehehehe',
+                'title' => 'python',
+                'content' => 'tanya tentang python',
                 'created_by' => 1,
                 'updated_by' => null
             ],
