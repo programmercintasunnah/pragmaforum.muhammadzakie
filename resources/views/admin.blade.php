@@ -187,7 +187,7 @@
                                             <tr>
                                                 <td class="align-middle">{{$fo->title}}</td>
                                                 <td class="align-middle">{{$fo->content}}</td>
-                                                <td class="align-middle">100</td>
+                                                <td class="align-middle text-centera">{{$fo->posts->count()}}</td>
                                                 <td class="align-middle">{{$fo->created_at}}</td>
                                                 <td class="align-middle">
                                                     detail

@@ -15,11 +15,11 @@ class CreateForumsTable extends Migration
     {
         Schema::create('forums', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('parent_id');
+            $table->bigInteger('parent_id')->nullable();
             $table->string('type');
             $table->string('title');
             $table->text('content');
-            $table->bigInteger('created_by')->nullable();
+            $table->bigInteger('created_by');
             $table->bigInteger('updated_by')->nullable();
             $table->timestamps();
         });
